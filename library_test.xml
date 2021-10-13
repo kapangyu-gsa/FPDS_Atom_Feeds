@@ -1,0 +1,12 @@
+<library>
+  <book>
+    <author>Dan Simmons</author>
+    <title>Hyperion</title>
+    <publishDate>1989</publishDate>
+  </book>
+  <book>
+    <author>Douglas Adams</author>
+    <title>The Hitchhiker's Guide to the Galaxy</title>
+    <publishDate>1979</publishDate>
+  </book>
+</library>
