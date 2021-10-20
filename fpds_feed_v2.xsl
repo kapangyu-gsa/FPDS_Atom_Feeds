@@ -10,6 +10,9 @@
     <field>PIID</field>
     <field>modNumber</field>
     <field>transactionNumber</field>
+    <field>agencyID</field>
+    <field>PIID</field>
+    <field>modNumber</field>
   </xsl:variable>
   <xsl:param name="fields" select="document('')/*/xsl:variable[@name='fieldArray']/*" />
  
@@ -24,15 +27,17 @@
     </xsl:for-each>
  
     <!-- output newline -->
-    <xsl:text>
-    </xsl:text>
+    <xsl:text>&#xa;</xsl:text>
  
     <xsl:apply-templates select="//ns1:awardID/ns1:awardContractID" />
+    <xsl:apply-templates select="//ns1:awardID/ns1:referencedIDVID" />
+
+    <!-- output newline -->
+    <xsl:text>&#xa;</xsl:text>
 
   </xsl:template>
  
-  <!-- <xsl:template match="ns1:awardID/ns1:awardContractID"> -->
-  <xsl:template match="ns1:awardContractID">
+  <xsl:template match="ns1:awardContractID | ns1:referencedIDVID">
     <xsl:variable name="currNode" select="." />
  
     <!-- output the data row -->
@@ -46,8 +51,7 @@
     </xsl:for-each>
  
     <!-- output newline -->
-    <xsl:text>
-    </xsl:text>
+    <!-- <xsl:text></xsl:text> -->
   
   </xsl:template>
 </xsl:stylesheet>
