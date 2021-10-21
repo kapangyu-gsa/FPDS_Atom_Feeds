@@ -4,7 +4,7 @@
  
   <xsl:variable name="delimiter" select="','" />
  
-   <xsl:variable name="fieldArray_1">
+  <xsl:variable name="fieldArray_1">
     <field prefix="">agencyID</field>
     <field prefix="">PIID</field>
     <field prefix="">modNumber</field>
@@ -29,10 +29,9 @@
 
   <xsl:param name="fields" select="document('')/*/xsl:variable[@name='fieldArray']/*" />
   <xsl:param name="fields_1" select="document('')/*/xsl:variable[@name='fieldArray_1']/*" />
-  <!-- <xsl:param name="fields_2" select="document('')/*/xsl:variable[@name='fieldArray_2']/*" /> -->
+  <xsl:param name="fields_2" select="document('')/*/xsl:variable[@name='fieldArray_2']/*" />
  
   <xsl:template match="/">
- 
     <!-- output the header row -->
     <xsl:for-each select="$fields">
       <xsl:if test="position() != 1">
@@ -47,31 +46,32 @@
     <xsl:text>&#xa;</xsl:text>
  
     <xsl:apply-templates select="//ns1:awardID/ns1:awardContractID" >
-      <xsl:with-param name="myfields" select="document('')/*/xsl:variable[@name='fieldArray_1']/*" />
+      <xsl:with-param name="myfields" select="$fields_1"/>
     </xsl:apply-templates>
-    <xsl:apply-templates select="//ns1:awardID/ns1:referencedIDVID" />
+    <!-- <xsl:apply-templates select="//ns1:awardID/ns1:referencedIDVID">
+      <xsl:with-param name="myfields" select="$fields_2"/>
+    </xsl:apply-templates> -->
 
     <!-- output newline -->
-    <xsl:text>&#xa;</xsl:text>
+    <!-- <xsl:text>&#xa;</xsl:text> -->
 
   </xsl:template>
  
-  <xsl:template match="ns1:awardContractID | ns1:referencedIDVID">
+  <xsl:template match="*">
     <xsl:param name="myfields" />
-    <xsl:text select="$fieldArray1" />
     <xsl:variable name="currNode" select="." />
     <!-- output the data row -->
     <!-- loop over the field names and find the value of each one in the xml -->
-    <!-- <xsl:for-each select="$fields">
+    <xsl:for-each select="$myfields">
       <xsl:if test="position() != 1">
         <xsl:value-of select="$delimiter"/>
-      </xsl:if> -->
+      </xsl:if>
       <!-- use substring() to skip the namespace prefix ns1: -->
-      <!-- <xsl:value-of select="$currNode/*[substring(name(), 5) = current()]" />
-    </xsl:for-each> -->
+      <xsl:value-of select="$currNode/*[substring(name(), 5) = current()]" />
+    </xsl:for-each>
  
     <!-- output newline -->
-    <!-- <xsl:text>&#xa;</xsl:text> -->
+    <xsl:text>&#xa;</xsl:text>
   
   </xsl:template>
 </xsl:stylesheet>
