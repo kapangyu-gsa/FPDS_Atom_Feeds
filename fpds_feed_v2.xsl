@@ -4,17 +4,32 @@
  
   <xsl:variable name="delimiter" select="','" />
  
+   <xsl:variable name="fieldArray_1">
+    <field prefix="">agencyID</field>
+    <field prefix="">PIID</field>
+    <field prefix="">modNumber</field>
+    <field prefix="">transactionNumber</field>
+  </xsl:variable>
+  <xsl:variable name="fieldArray_2">
+    <field prefix="ref-">agencyID</field>
+    <field prefix="ref-">PIID</field>
+    <field prefix="ref-">modNumber</field>
+  </xsl:variable>
   <!-- define an array containing the fields we are interested in -->
   <xsl:variable name="fieldArray">
-    <field>agencyID</field>
-    <field>PIID</field>
-    <field>modNumber</field>
-    <field>transactionNumber</field>
-    <field>agencyID</field>
-    <field>PIID</field>
-    <field>modNumber</field>
+    <field prefix="">agencyID</field>
+    <field prefix="">PIID</field>
+    <field prefix="">modNumber</field>
+    <field prefix="">transactionNumber</field>
+    <field prefix="ref-">agencyID</field>
+    <field prefix="ref-">PIID</field>
+    <field prefix="ref-">modNumber</field>
   </xsl:variable>
+
+
   <xsl:param name="fields" select="document('')/*/xsl:variable[@name='fieldArray']/*" />
+  <xsl:param name="fields_1" select="document('')/*/xsl:variable[@name='fieldArray_1']/*" />
+  <!-- <xsl:param name="fields_2" select="document('')/*/xsl:variable[@name='fieldArray_2']/*" /> -->
  
   <xsl:template match="/">
  
@@ -23,13 +38,17 @@
       <xsl:if test="position() != 1">
         <xsl:value-of select="$delimiter"/>
       </xsl:if>
-      <xsl:value-of select="." />
+      <xsl:for-each select=".">
+        <xsl:value-of select="concat(@prefix, text())" />
+      </xsl:for-each>
     </xsl:for-each>
  
     <!-- output newline -->
     <xsl:text>&#xa;</xsl:text>
  
-    <xsl:apply-templates select="//ns1:awardID/ns1:awardContractID" />
+    <xsl:apply-templates select="//ns1:awardID/ns1:awardContractID" >
+      <xsl:with-param name="myfields" select="document('')/*/xsl:variable[@name='fieldArray_1']/*" />
+    </xsl:apply-templates>
     <xsl:apply-templates select="//ns1:awardID/ns1:referencedIDVID" />
 
     <!-- output newline -->
@@ -38,20 +57,21 @@
   </xsl:template>
  
   <xsl:template match="ns1:awardContractID | ns1:referencedIDVID">
+    <xsl:param name="myfields" />
+    <xsl:text select="$fieldArray1" />
     <xsl:variable name="currNode" select="." />
- 
     <!-- output the data row -->
     <!-- loop over the field names and find the value of each one in the xml -->
-    <xsl:for-each select="$fields">
+    <!-- <xsl:for-each select="$fields">
       <xsl:if test="position() != 1">
         <xsl:value-of select="$delimiter"/>
-      </xsl:if>
+      </xsl:if> -->
       <!-- use substring() to skip the namespace prefix ns1: -->
-      <xsl:value-of select="$currNode/*[substring(name(), 5) = current()]" />
-    </xsl:for-each>
+      <!-- <xsl:value-of select="$currNode/*[substring(name(), 5) = current()]" />
+    </xsl:for-each> -->
  
     <!-- output newline -->
-    <!-- <xsl:text></xsl:text> -->
+    <!-- <xsl:text>&#xa;</xsl:text> -->
   
   </xsl:template>
 </xsl:stylesheet>
