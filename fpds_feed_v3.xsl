@@ -80,6 +80,26 @@
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">ultimateCompletionDate</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:ultimateCompletionDate"/></xsl:apply-templates>
+        <!-- dollarValues -->
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">obligatedAmount</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:obligatedAmount"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">baseAndExercisedOptionsValue</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:baseAndExercisedOptionsValue"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">baseAndAllOptionsValue</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:baseAndAllOptionsValue"/></xsl:apply-templates>
+        <!-- totalDollarValues -->
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">totalObligatedAmount</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:totalObligatedAmount"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">totalBaseAndExercisedOptionsValue</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:totalBaseAndExercisedOptionsValue"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">totalBaseAndAllOptionsValue</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:totalBaseAndAllOptionsValue"/></xsl:apply-templates>
 
 
 
