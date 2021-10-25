@@ -100,8 +100,68 @@
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">totalBaseAndAllOptionsValue</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:totalBaseAndAllOptionsValue"/></xsl:apply-templates>
-
-
+        <!-- purchaserInformation -->
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">contractingOfficeAgencyID</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:contractingOfficeAgencyID"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">contractingOfficeAgency-name</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:contractingOfficeAgencyID/@name"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">contractingOfficeAgency-departmentID</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:contractingOfficeAgencyID/@departmentID"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">contractingOfficeAgency-departmentName</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:contractingOfficeAgencyID/@departmentName"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">contractingOfficeID</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:contractingOfficeID"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">contractingOffice-description</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:contractingOfficeID/@Description"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">contractingOffice-regionCode</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:contractingOfficeID/@regionCode"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">contractingOffice-country</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:contractingOfficeID/@country"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">fundingRequestingAgencyID</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:fundingRequestingAgencyID"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">fundingRequestingAgency-name</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:fundingRequestingAgencyID/@name"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">fundingRequestingAgency-departmentID</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:fundingRequestingAgencyID/@departmentID"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">fundingRequestingAgency-departmentName</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:fundingRequestingAgencyID/@departmentName"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">fundingRequestingOfficeID</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:fundingRequestingOfficeID"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">fundingRequestingOffice-name</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:fundingRequestingOfficeID/@name"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">foreignFunding</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:foreignFunding"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">foreignFunding-description</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:foreignFunding/@description"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">purchaseReason</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:purchaseReason"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">purchaseReason-description</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:purchaseReason/@description"/></xsl:apply-templates>
+        <!-- contractMarketingData -->
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">feePaidForUseOfService</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:feePaidForUseOfService"/></xsl:apply-templates>
+        <xsl:apply-templates name="do-field" mode="check-field" >
+            <xsl:with-param name="fieldname">totalEstimatedOrderValue</xsl:with-param>
+            <xsl:with-param name="path" select="//ns1:totalEstimatedOrderValue"/></xsl:apply-templates>
 
         <!-- TODO: add the other fields -->
     </xsl:template>

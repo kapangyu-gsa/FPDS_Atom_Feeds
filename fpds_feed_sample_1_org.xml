@@ -42,9 +42,11 @@
           <ns1:contractingOfficeID name="NSWC DAHLGREN" country="USA">N00178</ns1:contractingOfficeID>
           <ns1:fundingRequestingAgencyID name="DEPT OF THE NAVY" departmentID="9700" departmentName="DEPT OF DEFENSE">1700</ns1:fundingRequestingAgencyID>
           <ns1:fundingRequestingOfficeID name="NSWC CARDEROCK DET PHILA">N65540</ns1:fundingRequestingOfficeID>
-          <ns1:foreignFunding description="NOT APPLICABLE">X</ns1:foreignFunding></ns1:purchaserInformation>
+          <ns1:foreignFunding description="NOT APPLICABLE">X</ns1:foreignFunding>
+        </ns1:purchaserInformation>
         <ns1:contractMarketingData>
-          <ns1:feePaidForUseOfService>0.00</ns1:feePaidForUseOfService></ns1:contractMarketingData>
+          <ns1:feePaidForUseOfService>0.00</ns1:feePaidForUseOfService>
+        </ns1:contractMarketingData>
         <ns1:contractData>
           <ns1:contractActionType description="DELIVERY ORDER">C</ns1:contractActionType>
           <ns1:typeOfContractPricing description="COST PLUS FIXED FEE">U</ns1:typeOfContractPricing>
