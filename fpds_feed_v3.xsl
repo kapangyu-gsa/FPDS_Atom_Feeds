@@ -9,9 +9,37 @@
     <!-- use the feed/entry node-set to create a blank column in the output file for a path not found in source data -->
     <xsl:variable name="dummy-nodeset" select="/f:feed/f:entry"/>
  
+    <xsl:template match="node()|@*" mode="check-field" >
+        <xsl:param name="fieldname"/>
+        <xsl:param name="path"/>
+        <xsl:value-of select="$fieldname"/>
+        <xsl:if test="$path">
+            <xsl:apply-templates select="$path" mode="do-field">
+                <xsl:with-param name="output-node-value" select="true()"/>
+            </xsl:apply-templates>
+        </xsl:if>
+        <xsl:if test="not($path)">
+            <xsl:apply-templates select="$dummy-nodeset" mode="do-field">
+                <!-- do not output node value for dummy node-set -->
+                <xsl:with-param name="output-node-value" select="false()"/>
+            </xsl:apply-templates>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="node()|@*" mode="do-field">
+        <xsl:param name="output-node-value"/>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:if test="$output-node-value">
+            <xsl:value-of select="." />
+        </xsl:if>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
     <xsl:template match="/">
         <!-- awardID -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">agencyID</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -25,9 +53,10 @@
             <xsl:with-param name="path" select="//ns1:award/ns1:awardID/ns1:awardContractID/ns1:modNumber"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">transactionNumber</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:award/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:award/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/></xsl:apply-templates> -->
+
         <!-- reference awardID -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">ref-agencyID</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -38,9 +67,10 @@
             <xsl:with-param name="path" select="//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:PIID"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">ref-modNumber</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/></xsl:apply-templates> -->
+
         <!-- other awardID -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">other-agencyID</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -54,9 +84,10 @@
             <xsl:with-param name="path" select="//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:modNumber"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">other-transactionNumber</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/></xsl:apply-templates> -->
+
         <!-- other reference awardID -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">other-ref-agencyID</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -67,9 +98,10 @@
             <xsl:with-param name="path" select="//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:PIID"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">other-ref-modNumber</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/></xsl:apply-templates> -->
+
         <!-- relevantContractDates -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">signedDate</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:signedDate"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -80,9 +112,10 @@
             <xsl:with-param name="path" select="//ns1:currentCompletionDate"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">ultimateCompletionDate</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:ultimateCompletionDate"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:ultimateCompletionDate"/></xsl:apply-templates> -->
+
         <!-- dollarValues -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">obligatedAmount</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:obligatedAmount"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -90,9 +123,10 @@
             <xsl:with-param name="path" select="//ns1:baseAndExercisedOptionsValue"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">baseAndAllOptionsValue</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:baseAndAllOptionsValue"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:baseAndAllOptionsValue"/></xsl:apply-templates> -->
+
         <!-- totalDollarValues -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">totalObligatedAmount</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:totalObligatedAmount"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -100,9 +134,10 @@
             <xsl:with-param name="path" select="//ns1:totalBaseAndExercisedOptionsValue"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">totalBaseAndAllOptionsValue</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:totalBaseAndAllOptionsValue"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:totalBaseAndAllOptionsValue"/></xsl:apply-templates> -->
+
         <!-- purchaserInformation -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">contractingOfficeAgencyID</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:contractingOfficeAgencyID"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -155,16 +190,18 @@
             <xsl:with-param name="path" select="//ns1:purchaseReason"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">purchaseReason-description</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:purchaseReason/@description"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:purchaseReason/@description"/></xsl:apply-templates> -->
+
         <!-- contractMarketingData -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">feePaidForUseOfService</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:feePaidForUseOfService"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">totalEstimatedOrderValue</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:totalEstimatedOrderValue"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:totalEstimatedOrderValue"/></xsl:apply-templates> -->
+
         <!-- contractData -->
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">contractActionType</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:contractActionType"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -244,10 +281,11 @@
             <xsl:with-param name="path" select="//ns1:consolidatedContract/@description"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">performanceBasedServiceContract</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:performanceBasedServiceContract"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:performanceBasedServiceContract"/></xsl:apply-templates> -->
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">performanceBasedServiceContract-description</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:performanceBasedServiceContract/@description"/></xsl:apply-templates>
+
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">multiYearContract</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:multiYearContract"/></xsl:apply-templates>
@@ -257,7 +295,7 @@
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">subLevelPrefixCode</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:subLevelPrefixCode"/></xsl:apply-templates>
-        <xsl:apply-templates name="do-field" mode="check-field" >
+        <!-- <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">allocationTransferAgencyIdentifier</xsl:with-param>
             <xsl:with-param name="path" select="//ns1:allocationTransferAgencyIdentifier"/></xsl:apply-templates>
         <xsl:apply-templates name="do-field" mode="check-field" >
@@ -322,37 +360,9 @@
             <xsl:with-param name="path" select="//ns1:purchaseCardAsPaymentMethod/@description"/></xsl:apply-templates>        
         <xsl:apply-templates name="do-field" mode="check-field" >
             <xsl:with-param name="fieldname">numberOfActions</xsl:with-param>
-            <xsl:with-param name="path" select="//ns1:numberOfActions"/></xsl:apply-templates>
+            <xsl:with-param name="path" select="//ns1:numberOfActions"/></xsl:apply-templates> -->
 
         <!-- TODO: add the other fields -->
     </xsl:template>
-
-    <xsl:template match="node()|@*" mode="check-field" >
-        <xsl:param name="fieldname"/>
-        <xsl:param name="path"/>
-        <xsl:value-of select="$fieldname"/>
-        <xsl:if test="$path">
-            <xsl:apply-templates select="$path" mode="do-field">
-                <xsl:with-param name="output-node-value" select="true()"/>
-            </xsl:apply-templates>
-        </xsl:if>
-        <xsl:if test="not($path)">
-            <xsl:apply-templates select="$dummy-nodeset" mode="do-field">
-                <!-- do not output node value for dummy node-set -->
-                <xsl:with-param name="output-node-value" select="false()"/>
-            </xsl:apply-templates>
-        </xsl:if>
-    </xsl:template>
-
-    <xsl:template match="node()|@*" mode="do-field">
-        <xsl:param name="output-node-value"/>
-        <xsl:value-of select="$delimiter"/>
-        <xsl:if test="$output-node-value">
-            <xsl:value-of select="." />
-        </xsl:if>
-        <xsl:if test="position() = last()">
-            <xsl:value-of select="$newline"/>
-        </xsl:if>
-     </xsl:template>
 
 </xsl:stylesheet>
