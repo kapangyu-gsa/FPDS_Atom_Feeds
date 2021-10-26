@@ -64,8 +64,8 @@
 		<costOrPricingData description="String">String</costOrPricingData>
 		<solicitationID>String</solicitationID>
 		<costAccountingStandardsClause description="String">String</costAccountingStandardsClause>
-		         <descriptionOfContractRequirement>String</descriptionOfContractRequirement>
-                <inherentlyGovernmentalFunction description="String">String</inherentlyGovernmentalFunction> 
+		<descriptionOfContractRequirement>String</descriptionOfContractRequirement>
+        <inherentlyGovernmentalFunction description="String">String</inherentlyGovernmentalFunction> 
 		<GFE-GFP description="String">String</GFE-GFP>
 		<seaTransportation description="String">String</seaTransportation>
 		<undefinitizedAction description="String">String</undefinitizedAction>
