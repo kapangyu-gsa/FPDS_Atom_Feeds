@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:f="http://www.w3.org/2005/Atom" xmlns:ns1="https://www.fpds.gov/FPDS">
+
+    <xsl:output method="text" />
+    <!-- use TAB as the delimiter as commas exist in the data -->
+    <xsl:variable name="delimiter" select="'&#x9;'"/>
+    <xsl:variable name="newline" select="'&#xa;'"/>
+    <!-- use the feed/entry node-set to create a blank column in the output file for a path not found in source data -->
+    <xsl:variable name="content-nodeset" select="/f:feed/f:entry/f:content"/>
+ 
+    <xsl:template match="f:content" mode="generic">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//*[local-name() = $fieldname]" />
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="agencyID">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="agencyName">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="PIID">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:PIID"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="modNumber">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:modNumber"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="transactionNumber">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="ref-agencyID">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="ref-agencyName">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="ref-PIID">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:PIID"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="ref-modNumber">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-agencyID">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-agencyName">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-PIID">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:PIID"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-modNumber">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:modNumber"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-transactionNumber">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-ref-agencyID">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-ref-agencyName">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-ref-PIID">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:PIID"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="other-ref-modNumber">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+</xsl:stylesheet>
