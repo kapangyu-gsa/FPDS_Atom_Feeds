@@ -261,6 +261,38 @@
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">numberOfActions</xsl:with-param></xsl:apply-templates> -->
 
+        <!-- legislativeMandates -->
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">ClingerCohenAct</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">ClingerCohenAct</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">materialsSuppliesArticlesEquipment</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">materialsSuppliesArticlesEquipment</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">laborStandards</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">laborStandards</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">constructionWageRateRequirements</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">constructionWageRateRequirements</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">interagencyContractingAuthority</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">interagencyContractingAuthority</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">otherStatutoryAuthority</xsl:with-param></xsl:apply-templates>  -->
+        <!-- TODO: to handle possible multiple entries of additionalReportingValue -->
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">additionalReportingValue</xsl:with-param></xsl:apply-templates>             -->
+
         <!-- TODO: add the other fields -->
     </xsl:template>
 
