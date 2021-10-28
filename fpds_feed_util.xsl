@@ -9,13 +9,26 @@
     <!-- use the feed/entry node-set to create a blank column in the output file for a path not found in source data -->
     <xsl:variable name="content-nodeset" select="/f:feed/f:entry/f:content"/>
  
-    <xsl:template match="f:content" mode="generic">
+    <xsl:template match="f:content" mode="generic-node">
         <xsl:param name="fieldname"/>
         <xsl:if test="position() = 1">
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
         <xsl:value-of select=".//*[local-name() = $fieldname]" />
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+     </xsl:template>
+
+    <xsl:template match="f:content" mode="generic-attr">
+        <xsl:param name="fieldname"/>
+        <xsl:param name="attrname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="concat($fieldname,'-',$attrname)"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:value-of select=".//*[local-name()=$fieldname]/attribute::*[local-name()=$attrname]"/>
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
