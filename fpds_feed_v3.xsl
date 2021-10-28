@@ -77,7 +77,7 @@
             <xsl:with-param name="fieldname">totalBaseAndAllOptionsValue</xsl:with-param></xsl:apply-templates> -->
 
         <!-- purchaserInformation -->
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">contractingOfficeAgencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">contractingOfficeAgencyID</xsl:with-param>
@@ -87,35 +87,45 @@
             <xsl:with-param name="attrname">departmentID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">contractingOfficeAgencyID</xsl:with-param>
-            <xsl:with-param name="attrname">departmentName</xsl:with-param></xsl:apply-templates>
+            <xsl:with-param name="attrname">departmentName</xsl:with-param></xsl:apply-templates> -->
+
         <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">contractingOfficeID</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">contractingOffice-description</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">contractingOffice-regionCode</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">contractingOffice-country</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">contractingOfficeID</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">contractingOfficeID</xsl:with-param>
+            <xsl:with-param name="attrname">regionCode</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">contractingOfficeID</xsl:with-param>
+            <xsl:with-param name="attrname">country</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">fundingRequestingAgencyID</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">fundingRequestingAgency-name</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">fundingRequestingAgency-departmentID</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">fundingRequestingAgency-departmentName</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">fundingRequestingAgencyID</xsl:with-param>
+            <xsl:with-param name="attrname">name</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">fundingRequestingAgencyID</xsl:with-param>
+            <xsl:with-param name="attrname">departmentID</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">fundingRequestingAgencyID</xsl:with-param>
+            <xsl:with-param name="attrname">departmentName</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">fundingRequestingOfficeID</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">fundingRequestingOffice-name</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">fundingRequestingOfficeID</xsl:with-param>
+            <xsl:with-param name="attrname">name</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">foreignFunding</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">foreignFunding-description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">foreignFunding</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">purchaseReason</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">purchaseReason-description</xsl:with-param></xsl:apply-templates> -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">purchaseReason</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates> -->
 
         <!-- contractMarketingData -->
         <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -126,20 +136,25 @@
         <!-- contractData -->
         <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">contractActionType</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">contractActionType-description</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">contractActionType-part8OrPart13</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">contractActionType</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">contractActionType</xsl:with-param>
+            <xsl:with-param name="attrname">part8OrPart13</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">typeOfContractPricing</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">typeOfContractPricing-description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">typeOfContractPricing</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">reasonForModification</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">reasonForModification</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">reasonForModification-description</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">majorProgramCode</xsl:with-param></xsl:apply-templates>
+            <xsl:with-param name="fieldname">majorProgramCode</xsl:with-param></xsl:apply-templates> -->
+
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">nationalInterestActionCode</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -160,12 +175,12 @@
             <xsl:with-param name="fieldname">inherentlyGovernmentalFunction</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">inherentlyGovernmentalFunction-description</xsl:with-param></xsl:apply-templates>
-        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">GFE-GFP</xsl:with-param></xsl:apply-templates> -->
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">GFE-GFP</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">GFE-GFP</xsl:with-param>
             <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
-        <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">seaTransportation</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">seaTransportation-description</xsl:with-param></xsl:apply-templates>
