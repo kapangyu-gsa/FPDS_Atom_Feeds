@@ -6,6 +6,9 @@
     <!-- use TAB as the delimiter as commas exist in the data -->
     <xsl:variable name="delimiter" select="'&#x9;'"/>
     <xsl:variable name="newline" select="'&#xa;'"/>
+    <!-- use semicolon to separate the multiple entries of the target node or field -->
+    <xsl:variable name="rec-delimiter" select="'&#x3b;'"/>
+
     <!-- use the feed/entry node-set to create a blank column in the output file for a path not found in source data -->
     <xsl:variable name="content-nodeset" select="/f:feed/f:entry/f:content"/>
  
@@ -15,11 +18,18 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//*[local-name() = $fieldname]" />
+        <xsl:variable name="targetnodes" select=".//*[local-name() = $fieldname]"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
-     </xsl:template>
+    </xsl:template>
 
     <xsl:template match="f:content" mode="generic-attr">
         <xsl:param name="fieldname"/>
@@ -28,7 +38,14 @@
             <xsl:value-of select="concat($fieldname,'-',$attrname)"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//*[local-name()=$fieldname]/attribute::*[local-name()=$attrname]"/>
+        <xsl:variable name="targetnodes" select=".//*[local-name()=$fieldname]/attribute::*[local-name()=$attrname]"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -40,7 +57,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -52,7 +76,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -64,7 +95,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:PIID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:PIID"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -76,7 +114,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:modNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:modNumber"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -88,7 +133,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -100,7 +152,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -112,7 +171,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -124,7 +190,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:PIID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:PIID"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -136,7 +209,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -148,7 +228,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -160,7 +247,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -172,7 +266,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:PIID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:PIID"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -184,7 +285,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:modNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:modNumber"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -196,7 +304,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:transactionNumber"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -208,7 +323,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -220,7 +342,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -232,7 +361,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:PIID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:PIID"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>
@@ -244,7 +380,14 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:value-of select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:modNumber"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
         <xsl:if test="position() = last()">
             <xsl:value-of select="$newline"/>
         </xsl:if>

@@ -323,7 +323,9 @@
           <ns1:materialsSuppliesArticlesEquipment description="NO">N</ns1:materialsSuppliesArticlesEquipment>
           <ns1:laborStandards description="NO">N</ns1:laborStandards>
           <ns1:constructionWageRateRequirements description="NO">N</ns1:constructionWageRateRequirements>
-          <ns1:listOfAdditionalReportingValues></ns1:listOfAdditionalReportingValues>
+          <ns1:listOfAdditionalReportingValues>
+            <ns1:additionalReportingValue description="NONE OF THE FOLLOWING">MANY</ns1:additionalReportingValue>
+          </ns1:listOfAdditionalReportingValues>
           <ns1:interagencyContractingAuthority description="NOT APPLICABLE">X</ns1:interagencyContractingAuthority></ns1:legislativeMandates>
         <ns1:productOrServiceInformation>
           <ns1:productOrServiceCode description="R&amp;D- DEFENSE OTHER: SERVICES (OPERATIONAL SYSTEMS DEVELOPMENT)" productOrServiceType="SERVICE">AD25</ns1:productOrServiceCode>
@@ -2312,7 +2314,10 @@
           <ns1:laborStandards description="YES">Y</ns1:laborStandards>
           <ns1:constructionWageRateRequirements description="YES">Y</ns1:constructionWageRateRequirements>
           <ns1:listOfAdditionalReportingValues>
-            <ns1:additionalReportingValue description="NONE OF THE ABOVE">NONE</ns1:additionalReportingValue></ns1:listOfAdditionalReportingValues>
+            <ns1:additionalReportingValue description="NONE OF THE ABOVE">NONE</ns1:additionalReportingValue>
+            <!-- added entry for testing -->
+            <ns1:additionalReportingValue description="NONE OF THE ABOVE 2">NONE2</ns1:additionalReportingValue>
+          </ns1:listOfAdditionalReportingValues>
           <ns1:interagencyContractingAuthority description="NOT APPLICABLE">X</ns1:interagencyContractingAuthority></ns1:legislativeMandates>
         <ns1:productOrServiceInformation>
           <ns1:productOrServiceCode description="IT AND TELECOM- TELECOMMUNICATIONS AND TRANSMISSION" productOrServiceType="SERVICE">D304</ns1:productOrServiceCode>

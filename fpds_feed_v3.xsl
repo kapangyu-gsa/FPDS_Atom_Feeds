@@ -7,7 +7,7 @@
     <xsl:template match="/">
 
         <!-- awardID -->
-        <!-- <xsl:apply-templates select="$content-nodeset" mode="agencyID">
+        <xsl:apply-templates select="$content-nodeset" mode="agencyID">
             <xsl:with-param name="fieldname">agencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="agencyName">
             <xsl:with-param name="fieldname">agencyName</xsl:with-param></xsl:apply-templates>
@@ -16,20 +16,20 @@
         <xsl:apply-templates select="$content-nodeset" mode="modNumber">
             <xsl:with-param name="fieldname">modNumber</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="transactionNumber">
-            <xsl:with-param name="fieldname">transactionNumber</xsl:with-param></xsl:apply-templates> -->
+            <xsl:with-param name="fieldname">transactionNumber</xsl:with-param></xsl:apply-templates>
 
         <!-- reference awardID -->
-        <!-- <xsl:apply-templates select="$content-nodeset" mode="ref-agencyID">
+        <xsl:apply-templates select="$content-nodeset" mode="ref-agencyID">
             <xsl:with-param name="fieldname">ref-agencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="ref-agencyName">
             <xsl:with-param name="fieldname">ref-agencyName</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="ref-PIID">
             <xsl:with-param name="fieldname">ref-PIID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="ref-modNumber">
-            <xsl:with-param name="fieldname">ref-modNumber</xsl:with-param></xsl:apply-templates> -->
+            <xsl:with-param name="fieldname">ref-modNumber</xsl:with-param></xsl:apply-templates>
 
         <!-- other awardID -->
-        <!-- <xsl:apply-templates select="$content-nodeset" mode="other-agencyID">
+        <xsl:apply-templates select="$content-nodeset" mode="other-agencyID">
             <xsl:with-param name="fieldname">other-agencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-agencyName">
             <xsl:with-param name="fieldname">other-agencyName</xsl:with-param></xsl:apply-templates>
@@ -38,17 +38,17 @@
         <xsl:apply-templates select="$content-nodeset" mode="other-modNumber">
             <xsl:with-param name="fieldname">other-modNumber</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-transactionNumber">
-            <xsl:with-param name="fieldname">other-transactionNumber</xsl:with-param></xsl:apply-templates> -->
+            <xsl:with-param name="fieldname">other-transactionNumber</xsl:with-param></xsl:apply-templates>
 
         <!-- other reference awardID -->
-        <!-- <xsl:apply-templates select="$content-nodeset" mode="other-ref-agencyID">
+        <xsl:apply-templates select="$content-nodeset" mode="other-ref-agencyID">
             <xsl:with-param name="fieldname">other-ref-agencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-ref-agencyName">
             <xsl:with-param name="fieldname">other-ref-agencyName</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-ref-PIID">
             <xsl:with-param name="fieldname">other-ref-PIID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-ref-modNumber">
-            <xsl:with-param name="fieldname">other-ref-modNumber</xsl:with-param></xsl:apply-templates> -->
+            <xsl:with-param name="fieldname">other-ref-modNumber</xsl:with-param></xsl:apply-templates>
 
         <!-- relevantContractDates -->
         <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -281,17 +281,19 @@
             <xsl:with-param name="fieldname">constructionWageRateRequirements</xsl:with-param></xsl:apply-templates>            
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">constructionWageRateRequirements</xsl:with-param>
-            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>            
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>             
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">interagencyContractingAuthority</xsl:with-param></xsl:apply-templates>            
+            <xsl:with-param name="fieldname">interagencyContractingAuthority</xsl:with-param></xsl:apply-templates>     
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">interagencyContractingAuthority</xsl:with-param>
             <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>            
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">otherStatutoryAuthority</xsl:with-param></xsl:apply-templates>  -->
-        <!-- TODO: to handle possible multiple entries of additionalReportingValue -->
-        <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">additionalReportingValue</xsl:with-param></xsl:apply-templates>             -->
+            <xsl:with-param name="fieldname">otherStatutoryAuthority</xsl:with-param></xsl:apply-templates>  
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">additionalReportingValue</xsl:with-param></xsl:apply-templates>            
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">additionalReportingValue</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>  -->          
 
         <!-- productOrServiceInformation -->
         <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
