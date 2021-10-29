@@ -7,7 +7,7 @@
     <xsl:template match="/">
 
         <!-- awardID -->
-        <xsl:apply-templates select="$content-nodeset" mode="agencyID">
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="agencyID">
             <xsl:with-param name="fieldname">agencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="agencyName">
             <xsl:with-param name="fieldname">agencyName</xsl:with-param></xsl:apply-templates>
@@ -16,20 +16,20 @@
         <xsl:apply-templates select="$content-nodeset" mode="modNumber">
             <xsl:with-param name="fieldname">modNumber</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="transactionNumber">
-            <xsl:with-param name="fieldname">transactionNumber</xsl:with-param></xsl:apply-templates>
+            <xsl:with-param name="fieldname">transactionNumber</xsl:with-param></xsl:apply-templates> -->
 
         <!-- reference awardID -->
-        <xsl:apply-templates select="$content-nodeset" mode="ref-agencyID">
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="ref-agencyID">
             <xsl:with-param name="fieldname">ref-agencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="ref-agencyName">
             <xsl:with-param name="fieldname">ref-agencyName</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="ref-PIID">
             <xsl:with-param name="fieldname">ref-PIID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="ref-modNumber">
-            <xsl:with-param name="fieldname">ref-modNumber</xsl:with-param></xsl:apply-templates>
+            <xsl:with-param name="fieldname">ref-modNumber</xsl:with-param></xsl:apply-templates> -->
 
         <!-- other awardID -->
-        <xsl:apply-templates select="$content-nodeset" mode="other-agencyID">
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="other-agencyID">
             <xsl:with-param name="fieldname">other-agencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-agencyName">
             <xsl:with-param name="fieldname">other-agencyName</xsl:with-param></xsl:apply-templates>
@@ -38,17 +38,17 @@
         <xsl:apply-templates select="$content-nodeset" mode="other-modNumber">
             <xsl:with-param name="fieldname">other-modNumber</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-transactionNumber">
-            <xsl:with-param name="fieldname">other-transactionNumber</xsl:with-param></xsl:apply-templates>
+            <xsl:with-param name="fieldname">other-transactionNumber</xsl:with-param></xsl:apply-templates> -->
 
         <!-- other reference awardID -->
-        <xsl:apply-templates select="$content-nodeset" mode="other-ref-agencyID">
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="other-ref-agencyID">
             <xsl:with-param name="fieldname">other-ref-agencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-ref-agencyName">
             <xsl:with-param name="fieldname">other-ref-agencyName</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-ref-PIID">
             <xsl:with-param name="fieldname">other-ref-PIID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="other-ref-modNumber">
-            <xsl:with-param name="fieldname">other-ref-modNumber</xsl:with-param></xsl:apply-templates>
+            <xsl:with-param name="fieldname">other-ref-modNumber</xsl:with-param></xsl:apply-templates> -->
 
         <!-- relevantContractDates -->
         <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -369,6 +369,117 @@
             <xsl:with-param name="fieldname">NAICSSource</xsl:with-param>
             <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates> -->
 
+        <!-- vendor -->
+        <!-- <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">vendorName</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">vendorAlternateName</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">vendorLegalOrganizationName</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">vendorDoingAsBusinessName</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">vendorEnabled</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isAlaskanNativeOwnedCorporationOrFirm</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isAmericanIndianOwned</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isIndianTribe</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isNativeHawaiianOwnedOrganizationOrFirm</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isVeteranOwned</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isServiceRelatedDisabledVeteranOwnedBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isWomenOwned</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isWomenOwnedSmallBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isEconomicallyDisadvantagedWomenOwnedSmallBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isJointVentureWomenOwnedSmallBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isJointVentureEconomicallyDisadvantagedWomenOwnedSmallBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isMinorityOwned</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isSubContinentAsianAmericanOwnedBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isAsianPacificAmericanOwnedBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isBlackAmericanOwnedBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isHispanicAmericanOwnedBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isNativeAmericanOwnedBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isOtherMinorityOwned</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isVerySmallBusiness</xsl:with-param></xsl:apply-templates> 
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isCommunityDevelopedCorporationOwnedFirm</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isLaborSurplusAreaFirm</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isFederalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isFederallyFundedResearchAndDevelopmentCorp</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isFederalGovernmentAgency</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isStateGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isLocalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isCityLocalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isCountyLocalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isInterMunicipalLocalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isLocalGovernmentOwned</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isMunicipalityLocalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isSchoolDistrictLocalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isTownshipLocalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isTribalGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isForeignGovernment</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isCorporateEntityNotTaxExempt</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isCorporateEntityTaxExempt</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isPartnershipOrLimitedLiabilityPartnership</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isSolePropreitorship</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isSmallAgriculturalCooperative</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isInternationalOrganization</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isUSGovernmentEntity</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isCommunityDevelopmentCorporation</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isDomesticShelter</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isEducationalInstitution</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isFoundation</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isHospital</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isManufacturerOfGoods</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isVeterinaryHospital</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">isHispanicServicingInstitution</xsl:with-param></xsl:apply-templates> -->
 
 
         <!-- TODO: add the other fields -->
