@@ -393,4 +393,81 @@
         </xsl:if>
      </xsl:template>
 
+    <xsl:template match="f:content" mode="vendor-countryCode">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:variable name="targetnodes" select=".//ns1:vendorLocation/ns1:countryCode"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="f:content" mode="vendor-countryName">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:variable name="targetnodes" select=".//ns1:vendorLocation/ns1:countryCode/@name"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="f:content" mode="performance-countryCode">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:variable name="targetnodes" select=".//ns1:principalPlaceOfPerformance/ns1:countryCode"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="f:content" mode="performance-countryName">
+        <xsl:param name="fieldname"/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="$fieldname"/>
+        </xsl:if>
+        <xsl:value-of select="$delimiter"/>
+        <xsl:variable name="targetnodes" select=".//ns1:principalPlaceOfPerformance/ns1:countryCode/@name"/>
+        <xsl:variable name="nodecount" select="count($targetnodes)"/>
+        <xsl:for-each select="$targetnodes">
+            <xsl:value-of select="."/>
+            <xsl:if test="$nodecount > 1 and not(position() = last())">
+                <xsl:value-of select="$rec-delimiter"/>
+            </xsl:if>
+        </xsl:for-each> 
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="$newline"/>
+        </xsl:if>
+    </xsl:template>
+
+
 </xsl:stylesheet>
