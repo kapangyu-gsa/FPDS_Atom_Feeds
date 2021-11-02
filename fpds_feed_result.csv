@@ -1,11 +1,11 @@
-fedBizOpps,fedBizOpps-description,localAreaSetAside,localAreaSetAside-description,preAwardSynopsisRequirement,priceEvaluationPercentDifference,synopsisWaiverException,alternativeAdvertising,idvTypeOfSetAside,idvTypeOfSetAside-description,typeOfSetAsideSource,typeOfSetAsideSource-description,idvNumberOfOffersReceived,idvNumberOfOffersReceived-description,numberOfOffersSource,numberOfOffersSource-description
-X,NOT APPLICABLE,N,NO,,,,,,,,,,,,
-X,NOT APPLICABLE,N,NO,,,,,,,,,,,,
-X,NOT APPLICABLE,N,NO,,,,,,,,,,,,
-X,NOT APPLICABLE,N,NO,,,,,,,,,,,,
-X,NOT APPLICABLE,N,NO,,,,,,,,,,,,
-X,NOT APPLICABLE,N,NO,,,,,,,,,,,,
-Y,YES,N,NO,,,,,,,,,,,,
-Y,YES,N,NO,,0.00,,,,,,,,,,
-X,NOT APPLICABLE,N,NO,,,,,,,,,,,,
-Y,YES,N,NO,,,,,SBA,SMALL BUSINESS SET ASIDE - TOTAL,F,This Action,40,,F,This Action
+genericBoolean01,genericBoolean02,genericBoolean03,genericBoolean04,genericBoolean05,genericBoolean06,genericBoolean07,genericBoolean08,genericBoolean09,genericBoolean10
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,

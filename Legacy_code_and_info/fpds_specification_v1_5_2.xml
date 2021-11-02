@@ -346,7 +346,7 @@
 		<closedStatus>String</closedStatus>
 		<closedBy>String</closedBy>
 		<closedDate>0000-00-00 00:00:00</closedDate>
-        </transactionInformation>
+    </transactionInformation>
 	<genericTags>
 		<genericStrings>
 			<genericString01>0000-00-00 00:00:00</genericString01>

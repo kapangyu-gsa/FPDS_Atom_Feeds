@@ -762,11 +762,93 @@
             <xsl:with-param name="fieldname">numberOfOffersSource</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">numberOfOffersSource</xsl:with-param>
-            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates> -->
-
-
-
-        <!-- TODO: add the other fields -->
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">subcontractPlan</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">subcontractPlan</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">reasonNotAwardedToSmallDisadvantagedBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">reasonNotAwardedToSmallDisadvantagedBusiness</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">reasonNotAwardedToSmallBusiness</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">reasonNotAwardedToSmallBusiness</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">createdBy</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">createdDate</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">lastModifiedBy</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">lastModifiedDate</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">status</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">status</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">approvedBy</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">approvedDate</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">closedStatus</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">closedBy</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">closedDate</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString01</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString02</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString03</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString04</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString05</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString06</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString07</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString08</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString09</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericString10</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean01</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean02</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean03</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean04</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean05</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean06</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean07</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean08</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean09</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericBoolean10</xsl:with-param></xsl:apply-templates> -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericFloat01</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericFloat02</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericInteger01</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">genericInteger02</xsl:with-param></xsl:apply-templates>
     </xsl:template>
 
 </xsl:stylesheet>
