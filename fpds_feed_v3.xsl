@@ -612,7 +612,7 @@
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">globalParentDUNSNumber</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
-            <xsl:with-param name="fieldname">globalParentDUNSName</xsl:with-param></xsl:apply-templates> -->
+            <xsl:with-param name="fieldname">globalParentDUNSName</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">UEI</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -648,7 +648,54 @@
             <xsl:with-param name="fieldname">contractingOfficerBusinessSizeDetermination</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">contractingOfficerBusinessSizeDetermination</xsl:with-param>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">locationCode</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">stateCode</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">stateCode</xsl:with-param>
+            <xsl:with-param name="attrname">name</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="performance-countryCode">
+            <xsl:with-param name="fieldname">performance-countryCode</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="performance-countryName">
+            <xsl:with-param name="fieldname">performance-countryName</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">placeOfPerformanceZIPCode</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">placeOfPerformanceZIPCode</xsl:with-param>
+            <xsl:with-param name="attrname">county</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">placeOfPerformanceZIPCode</xsl:with-param>
+            <xsl:with-param name="attrname">city</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">placeOfPerformanceCongressionalDistrict</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">extentCompeted</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">extentCompeted</xsl:with-param>
             <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">competitiveProcedures</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">solicitationProcedures</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">solicitationProcedures</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">typeOfSetAside</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">typeOfSetAside</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">evaluatedPreference</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">evaluatedPreference</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">research</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">research</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates> -->
 
 
         <!-- TODO: add the other fields -->

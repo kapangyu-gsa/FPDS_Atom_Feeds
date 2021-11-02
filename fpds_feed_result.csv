@@ -1,11 +1,11 @@
-is1862LandGrantCollege,is1890LandGrantCollege,is1994LandGrantCollege,isHistoricallyBlackCollegeOrUniversity,isMinorityInstitution,isPrivateUniversityOrCollege,isSchoolOfForestry,isStateControlledInstitutionofHigherLearning,isTribalCollege,isVeterinaryCollege,isAlaskanNativeServicingInstitution,isNativeHawaiianServicingInstitution
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
-False,False,False,False,False,False,False,False,False,False,False,False
+extentCompeted,extentCompeted-description,competitiveProcedures,solicitationProcedures,solicitationProcedures-description,typeOfSetAside,typeOfSetAside-description,evaluatedPreference,evaluatedPreference-description,research,research-description
+A,FULL AND OPEN COMPETITION,,MAFO,SUBJECT TO MULTIPLE AWARD FAIR OPPORTUNITY,NONE,NO SET ASIDE USED.,NONE,NO PREFERENCE USED,,
+A,FULL AND OPEN COMPETITION,,MAFO,SUBJECT TO MULTIPLE AWARD FAIR OPPORTUNITY,NONE,NO SET ASIDE USED.,NONE,NO PREFERENCE USED,,
+A,FULL AND OPEN COMPETITION,,MAFO,SUBJECT TO MULTIPLE AWARD FAIR OPPORTUNITY,NONE,NO SET ASIDE USED.,NONE,NO PREFERENCE USED,,
+A,FULL AND OPEN COMPETITION,,MAFO,SUBJECT TO MULTIPLE AWARD FAIR OPPORTUNITY,NONE,NO SET ASIDE USED.,NONE,NO PREFERENCE USED,,
+A,FULL AND OPEN COMPETITION,,MAFO,SUBJECT TO MULTIPLE AWARD FAIR OPPORTUNITY,NONE,NO SET ASIDE USED.,NONE,NO PREFERENCE USED,,
+A,FULL AND OPEN COMPETITION,,MAFO,SUBJECT TO MULTIPLE AWARD FAIR OPPORTUNITY,NONE,NO SET ASIDE USED.,NONE,NO PREFERENCE USED,,
+D,FULL AND OPEN COMPETITION AFTER EXCLUSION OF SOURCES,,NP,NEGOTIATED PROPOSAL/QUOTE,SBA,SMALL BUSINESS SET ASIDE - TOTAL,NONE,NO PREFERENCE USED,,
+B,NOT AVAILABLE FOR COMPETITION,,SSS,ONLY ONE SOURCE,8AN,8(A) SOLE SOURCE ,NONE,NO PREFERENCE USED,,
+F,COMPETED UNDER SAP,,SP1,SIMPLIFIED ACQUISITION,NONE,NO SET ASIDE USED.,NONE,NO PREFERENCE USED,,
+D,FULL AND OPEN COMPETITION AFTER EXCLUSION OF SOURCES,,MAFO,SUBJECT TO MULTIPLE AWARD FAIR OPPORTUNITY,SBA,SMALL BUSINESS SET ASIDE - TOTAL,NONE,NO PREFERENCE USED,,
