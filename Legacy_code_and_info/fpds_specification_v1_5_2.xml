@@ -180,7 +180,7 @@
                                        <isCorporateEntityNotTaxExempt>1</isCorporateEntityNotTaxExempt>
                                        <isCorporateEntityTaxExempt>1</isCorporateEntityTaxExempt>
                                        <isPartnershipOrLimitedLiabilityPartnership>1</isPartnershipOrLimitedLiabilityPartnership>
-                                      <isSolePropreitorship>1</isSolePropreitorship>
+                                       <isSolePropreitorship>1</isSolePropreitorship>
                                        <isSmallAgriculturalCooperative>1</isSmallAgriculturalCooperative>
                                        <isInternationalOrganization>1</isInternationalOrganization>
                                        <isUSGovernmentEntity></isUSGovernmentEntity>
