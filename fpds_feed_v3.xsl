@@ -103,7 +103,7 @@
             <xsl:with-param name="fieldname">fundingRequestingAgencyID</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">fundingRequestingAgencyID</xsl:with-param>
-            <xsl:with-param name="attrname">name</xsl:with-param></xsl:apply-templates>
+            <xsl:with-param name="attrname">name</xsl:with-param></xsl:apply-templates> 
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">fundingRequestingAgencyID</xsl:with-param>
             <xsl:with-param name="attrname">departmentID</xsl:with-param></xsl:apply-templates>
