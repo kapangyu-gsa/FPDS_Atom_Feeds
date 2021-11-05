@@ -59,6 +59,9 @@
             <xsl:with-param name="fieldname">currentCompletionDate</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">ultimateCompletionDate</xsl:with-param></xsl:apply-templates>
+        <!-- IDV fields  -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">lastDateToOrder</xsl:with-param></xsl:apply-templates>
 
         <!-- dollarValues -->
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -131,6 +134,27 @@
             <xsl:with-param name="fieldname">feePaidForUseOfService</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">totalEstimatedOrderValue</xsl:with-param></xsl:apply-templates>
+        <!-- IDV fields -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">websiteURL</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">whoCanUse</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">whoCanUse</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">emailAddress</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">individualOrderLimit</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">typeOfFeeForUseOfService</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">typeOfFeeForUseOfService</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">fixedFeeValue</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">orderingProcedure</xsl:with-param></xsl:apply-templates>
 
         <!-- contractData -->
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -242,6 +266,20 @@
             <xsl:with-param name="fieldname">referencedIDVMultipleOrSingle</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">referencedIDVType</xsl:with-param></xsl:apply-templates>
+        <!-- IDV fields -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">typeOfIDC</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">typeOfIDC</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">multipleOrSingleAwardIDC</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">multipleOrSingleAwardIDC</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">programAcronym</xsl:with-param></xsl:apply-templates>
+
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">contingencyHumanitarianPeacekeepingOperation</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
@@ -643,6 +681,18 @@
         <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
             <xsl:with-param name="fieldname">contractingOfficerBusinessSizeDetermination</xsl:with-param>
             <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <!-- IDV fields  -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">IDVcontractingOfficerBusinessSize</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">IDVcontractingOfficerBusinessSize</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">IDVcontractingOfficerBusinessSizeSource</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">IDVcontractingOfficerBusinessSizeSource</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>
+
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">locationCode</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
