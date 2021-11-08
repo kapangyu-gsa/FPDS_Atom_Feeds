@@ -62,6 +62,9 @@
         <!-- IDV fields  -->
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">lastDateToOrder</xsl:with-param></xsl:apply-templates>
+        <!-- Other Transaction Award fields -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">nonGovernmentalDollars</xsl:with-param></xsl:apply-templates>
 
         <!-- dollarValues -->
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -70,6 +73,9 @@
             <xsl:with-param name="fieldname">baseAndExercisedOptionsValue</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">baseAndAllOptionsValue</xsl:with-param></xsl:apply-templates>
+        <!-- Other Transaction Award fields -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">fiscalYear</xsl:with-param></xsl:apply-templates>
 
         <!-- totalDollarValues -->
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -78,6 +84,9 @@
             <xsl:with-param name="fieldname">totalBaseAndExercisedOptionsValue</xsl:with-param></xsl:apply-templates>
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">totalBaseAndAllOptionsValue</xsl:with-param></xsl:apply-templates>
+        <!-- Other Transaction Award fields -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">totalNonGovernmentalDollars</xsl:with-param></xsl:apply-templates>
 
         <!-- purchaserInformation -->
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
@@ -297,6 +306,24 @@
             <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>        
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">
             <xsl:with-param name="fieldname">numberOfActions</xsl:with-param></xsl:apply-templates>
+        <!-- Other Transaction Award fields -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">typeOfAgreement</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">nonTraditionalGovernmentContractorParticipation</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">nonTraditionalGovernmentContractorParticipation</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>        
+
+        <!-- PSCCode (Other Transaction) -->
+        <xsl:apply-templates select="$content-nodeset" mode="generic-node">
+            <xsl:with-param name="fieldname">PSCCode</xsl:with-param></xsl:apply-templates>
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">PSCCode</xsl:with-param>
+            <xsl:with-param name="attrname">description</xsl:with-param></xsl:apply-templates>        
+        <xsl:apply-templates select="$content-nodeset" mode="generic-attr">
+            <xsl:with-param name="fieldname">PSCCode</xsl:with-param>
+            <xsl:with-param name="attrname">productOrServiceType</xsl:with-param></xsl:apply-templates>        
 
         <!-- legislativeMandates -->
         <xsl:apply-templates select="$content-nodeset" mode="generic-node">

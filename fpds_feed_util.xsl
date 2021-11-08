@@ -57,7 +57,9 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID | .//ns1:IDV/ns1:contractID/ns1:IDVID/ns1:agencyID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID | 
+                                                .//ns1:IDV/ns1:contractID/ns1:IDVID/ns1:agencyID |
+                                                .//ns1:OtherTransactionAward/ns1:OtherTransactionAwardID/ns1:OtherTransactionAwardContractID/ns1:agencyID"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -76,7 +78,9 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name | .//ns1:IDV/ns1:contractID/ns1:IDVID/ns1:agencyID/@name"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name | 
+                                                .//ns1:IDV/ns1:contractID/ns1:IDVID/ns1:agencyID/@name |
+                                                .//ns1:OtherTransactionAward/ns1:OtherTransactionAwardID/ns1:OtherTransactionAwardContractID/ns1:agencyID/@name"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -95,7 +99,9 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:PIID | .//ns1:IDV/ns1:contractID/ns1:IDVID/ns1:PIID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:PIID | 
+                                                .//ns1:IDV/ns1:contractID/ns1:IDVID/ns1:PIID |
+                                                .//ns1:OtherTransactionAward/ns1:OtherTransactionAwardID/ns1:OtherTransactionAwardContractID/ns1:PIID"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -114,7 +120,9 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:modNumber | .//ns1:IDV/ns1:contractID/ns1:IDVID/ns1:modNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:awardContractID/ns1:modNumber | 
+                                                .//ns1:IDV/ns1:contractID/ns1:IDVID/ns1:modNumber |
+                                                .//ns1:OtherTransactionAward/ns1:OtherTransactionAwardID/ns1:OtherTransactionAwardContractID/ns1:modNumber"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -152,7 +160,9 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID | .//ns1:IDV/ns1:contractID/ns1:referencedIDVID/ns1:agencyID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID | 
+                                                .//ns1:IDV/ns1:contractID/ns1:referencedIDVID/ns1:agencyID |
+                                                .//ns1:OtherTransactionAward/ns1:OtherTransactionAwardID/ns1:referencedIDVID/ns1:agencyID"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -171,7 +181,9 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name | .//ns1:IDV/ns1:contractID/ns1:referencedIDVID/ns1:agencyID/@name"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name | 
+                                                .//ns1:IDV/ns1:contractID/ns1:referencedIDVID/ns1:agencyID/@name |
+                                                .//ns1:OtherTransactionAward/ns1:OtherTransactionAwardID/ns1:referencedIDVID/ns1:agencyID/@name"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -190,7 +202,9 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:PIID | .//ns1:IDV/ns1:contractID/ns1:referencedIDVID/ns1:PIID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:PIID | 
+                                                .//ns1:IDV/ns1:contractID/ns1:referencedIDVID/ns1:PIID |
+                                                .//ns1:OtherTransactionAward/ns1:OtherTransactionAwardID/ns1:referencedIDVID/ns1:PIID"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -209,7 +223,9 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:modNumber | .//ns1:IDV/ns1:contractID/ns1:referencedIDVID/ns1:modNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:awardID/ns1:referencedIDVID/ns1:modNumber | 
+                                                .//ns1:IDV/ns1:contractID/ns1:referencedIDVID/ns1:modNumber |
+                                                .//ns1:OtherTransactionAward/ns1:OtherTransactionAwardID/ns1:referencedIDVID/ns1:modNumber"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -228,7 +244,8 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID | .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:IDVID/ns1:agencyID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID | 
+                                                .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:IDVID/ns1:agencyID"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -247,7 +264,8 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name | .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:IDVID/ns1:agencyID/@name"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:agencyID/@name | 
+                                                .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:IDVID/ns1:agencyID/@name"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -266,7 +284,8 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:PIID | .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:IDVID/ns1:PIID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:PIID | 
+                                                .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:IDVID/ns1:PIID"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -285,7 +304,8 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:modNumber | .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:IDVID/ns1:modNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:awardContractID/ns1:modNumber | 
+                                                .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:IDVID/ns1:modNumber"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -323,7 +343,8 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID | .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:referencedIDVID/ns1:agencyID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID | 
+                                                .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:referencedIDVID/ns1:agencyID"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -342,7 +363,8 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name | .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:referencedIDVID/ns1:agencyID/@name"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:agencyID/@name | 
+                                                .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:referencedIDVID/ns1:agencyID/@name"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -361,7 +383,8 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:PIID | .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:referencedIDVID/ns1:PIID"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:PIID | 
+                                                .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:referencedIDVID/ns1:PIID"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
@@ -380,7 +403,8 @@
             <xsl:value-of select="$fieldname"/>
         </xsl:if>
         <xsl:value-of select="$delimiter"/>
-        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:modNumber | .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:referencedIDVID/ns1:modNumber"/>
+        <xsl:variable name="targetnodes" select=".//ns1:award/ns1:listOfOtherIDsForThisAward/ns1:awardID/ns1:referencedIDVID/ns1:modNumber | 
+                                                .//ns1:IDV/ns1:listOfOtherIDsForThisIDV/ns1:referencedIDVID/ns1:modNumber"/>
         <xsl:variable name="nodecount" select="count($targetnodes)"/>
         <xsl:for-each select="$targetnodes">
             <xsl:value-of select="normalize-space(.)"/>
