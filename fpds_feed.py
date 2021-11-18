@@ -5,10 +5,9 @@ from io import StringIO
 import requests
 
 class fpds_feed_reader():
-    def __init__(self, xslt_file: str="fpds_feed.xsl"):
-        self.xslt_file = xslt_file
-        self.base_url = "https://www.fpds.gov/ezsearch/fpdsportal?s=FPDS.GOV&indexName=awardfull&templateName=1.5.2&rss=1&feed=atom0.3&q=+LAST_MOD_DATE"
-        
+    def __init__(self, base_url = "https://www.fpds.gov/ezsearch/fpdsportal?s=FPDS.GOV&indexName=awardfull&templateName=1.5.2&rss=1&feed=atom0.3&q=+LAST_MOD_DATE", xslt_file: str="fpds_feed.xsl"):
+        self.base_url = base_url
+        self.xslt_file = xslt_file        
     
     def get_data(self, last_mod_date_start: str="2021/10/01", last_mod_date_end: str="2021/11/01"):
         # TODO: validate the input arguments
