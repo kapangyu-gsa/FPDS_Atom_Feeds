@@ -64,7 +64,7 @@ class fpds_feed_reader():
                 
                 time_diff = time.time()-start_time
                 total_time += time_diff
-                print(f"page {next} of {stop_page}, process time: {time_diff:.2f} seconds")
+                print(f"row {next} of {stop_page}, processing time: {time_diff:.2f} seconds")
         df_final = pd.concat(df_list)
         
         print(f"Total processing time: {str(datetime.timedelta(seconds=total_time))}")
