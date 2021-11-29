@@ -20,7 +20,7 @@ class fpds_feed_reader():
         self.page_size = page_size
         self.max_last_page = max_last_page       
     
-    def _get_last_page(self, response_content: bytes):
+    def _get_first_row_num_of_last_page(self, response_content: bytes):
         tree = etree.XML(response_content)
         href = tree.xpath("/f:feed/f:link[@rel = 'last']/@href", namespaces={'f': self.feed_namespace})[0]
         last_page = re.search("start=(\d+)$", href)
@@ -32,19 +32,18 @@ class fpds_feed_reader():
         response = requests.get(url)
         if (response.ok == False):
             response.raise_for_status()
-            
+        
         doc = etree.XML(response.content)
         xslt_tree = etree.parse(self.xslt_file)
         transform = etree.XSLT(xslt_tree)
-        result = transform(doc)
+        result = transform(doc)        
         csv_str = str(result)
         df = pd.read_csv(StringIO(csv_str), sep="\t", header=None, index_col=0) if (csv_str != "") else None
         last_page = -1
         if ((start == 0) and (df is not None)):
-            last_page = self._get_last_page(response.content)
+            last_page = self._get_first_row_num_of_last_page(response.content)
         return df.T, last_page
-        
-        
+              
     def get_data(self, param: str):
         # TODO: validate the input arguments
         # param = f':[{last_mod_date_start},{last_mod_date_end}]'
@@ -58,13 +57,11 @@ class fpds_feed_reader():
             stop_page = last_page if (last_page < self.max_last_page) else self.max_last_page
             for next in range(self.page_size, stop_page, self.page_size):
                 start_time = time.time()
-            
                 df, _ = self._get_one_page_data(param, next)
                 df_list.append(df)
-                
                 time_diff = time.time()-start_time
                 total_time += time_diff
-                print(f"row {next} of {stop_page}, processing time: {time_diff:.2f} seconds")
+                print(f"row {next} of {stop_page}, processing time: {time_diff:.2f} secs")
         df_final = pd.concat(df_list)
         
         print(f"Total processing time: {str(datetime.timedelta(seconds=total_time))}")
