@@ -7,8 +7,9 @@ from urllib.parse import quote_plus
 
 class requests:
     
-    def __init__(self, base_url: str) -> None:
+    def __init__(self, base_url: str, page_size: int=10) -> None:
         self.base_url = base_url
+        self.page_size = page_size
     
     def _download_data(self, url: str) -> bytes:
         response = rq.get(url, stream=True)
@@ -18,9 +19,9 @@ class requests:
         return response.content
 
 
-    def get(self, param: str, start_index: int=0, max_workers: int=10, page_size: int=10) -> Iterator:
-        max_index = start_index + max_workers * page_size
-        url_list = [self.base_url + quote_plus(param) + f"&start={start}" for start in range(start_index, max_index, page_size)]
+    def get(self, param: str, start_index: int=0, max_workers: int=10) -> Iterator:
+        max_index = start_index + max_workers * self.page_size
+        url_list = [self.base_url + quote_plus(param) + f"&start={start}" for start in range(start_index, max_index, self.page_size)]
 
         processes = []
         with ThreadPoolExecutor(max_workers) as executor:

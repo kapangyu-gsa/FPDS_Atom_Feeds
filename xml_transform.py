@@ -2,11 +2,11 @@ import pandas as pd
 from lxml import etree
 from io import StringIO
 
-class transforms:
+class transform:
     def __init__(self, xslt_file: str) -> None:
         self.xslt_file = xslt_file
     
-    def to_csv(self, data: bytes):
+    def to_dataframe(self, data: bytes) -> pd.DataFrame:
         doc = etree.XML(data)
         xslt_tree = etree.parse(self.xslt_file)
         transform = etree.XSLT(xslt_tree)
