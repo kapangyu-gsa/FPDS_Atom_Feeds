@@ -15,6 +15,6 @@ class transform:
         if (csv_str == ""):
             return None
         
-        df = pd.read_csv(StringIO(csv_str), sep="\t", header=None, index_col=0)
+        df = pd.read_csv(StringIO(csv_str), sep="\t", header=None, index_col=0, encoding="utf-8", engine="python")
         # need to transpose the data to get the right format
         return df.T
