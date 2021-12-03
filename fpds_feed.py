@@ -20,7 +20,8 @@ class feed_reader():
         self.tf = transform(xslt_file)
         self.req = requests(base_url, page_size)
         self.page_size = page_size
-        self.max_rows = max_rows       
+        self.max_rows = max_rows      
+        self.output_dir = f"{os.getcwd()}/output_files" 
     
     def _get_start_index_of_last_page(self, response_content: bytes):
         tree = etree.XML(response_content)
@@ -33,11 +34,18 @@ class feed_reader():
     
     def _to_csv(self, data: pd.DataFrame, batch_num: int):
         try:
-            data.to_csv(f"output_files//batch{batch_num}.csv", encoding = 'utf-8', index=False)
+            data.to_csv(f"{self.output_dir}/batch{batch_num}.csv", encoding = 'utf-8', index=False)
         except FileNotFoundError:
-            os.makedirs("output_files")
-            data.to_csv(f"output_files//batch{batch_num}.csv", encoding = 'utf-8', index=False)
+            os.makedirs(self.output_dir)
+            data.to_csv(f"{self.output_dir}/batch{batch_num}.csv", encoding = 'utf-8', index=False)
                 
+    def _remove_csvs(self):
+        # dir_name = os.getcwd()
+        files = os.listdir(self.output_dir)
+        for file in files:
+            if file.endswith(".csv"):
+                os.remove(os.path.join(self.output_dir, file))
+
     def get_data(self, param: str, max_workers: int=10):
         # get the start index of last page from the first returned data
         iter = self.req.get(param, start_index=0, max_workers=1)
@@ -53,6 +61,7 @@ class feed_reader():
         stop_index = last_page_index if (last_page_index < self.max_rows) else self.max_rows
         batch_size = max_workers * self.page_size
         batch_num = 0
+        self._remove_csvs()
         print(f"Requesting data (~{stop_index} rows) from the feed...")
         for start_index in range(0, stop_index, batch_size):
             # timestamp the current batch
@@ -65,7 +74,7 @@ class feed_reader():
                 if (df is None):
                     continue
                 results.append(df)
-            df_batch = pd.concat(results)
+            df_batch = pd.concat(results, ignore_index=True)
             # export the current batch result to a .csv file
             self._to_csv(df_batch, batch_num)                                
             time_diff = time.time()-start_time
@@ -78,5 +87,5 @@ class feed_reader():
         
 if __name__ == "__main__":
     reader = feed_reader()
-    reader.get_data(f"LAST_MOD_DATE:[2019/11/28, 2021/11/28]", max_workers=20)
+    reader.get_data(f"LAST_MOD_DATE:[2021/11/28, 2021/11/28]", max_workers=10)
         
