@@ -1,6 +1,7 @@
 import pandas as pd
 from lxml import etree
 from io import StringIO
+import csv
 
 class transform:
     def __init__(self, xslt_file: str) -> None:
@@ -15,6 +16,6 @@ class transform:
         if (csv_str == ""):
             return None
         
-        df = pd.read_csv(StringIO(csv_str), sep="\t", header=None, index_col=0, on_bad_lines='warn', engine="c")
+        df = pd.read_csv(StringIO(csv_str), sep="\t", header=None, index_col=0, on_bad_lines='warn', engine="c", quoting=csv.QUOTE_NONE)
         # need to transpose the data to get the right format
         return df.T

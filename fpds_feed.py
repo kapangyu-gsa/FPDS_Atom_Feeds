@@ -87,5 +87,5 @@ class feed_reader():
         
 if __name__ == "__main__":
     reader = feed_reader()
-    reader.get_data(f"LAST_MOD_DATE:[2021/11/28, 2021/11/28]", max_workers=10)
+    reader.get_data(f"LAST_MOD_DATE:[2020/11/28, 2021/11/28]", max_workers=10)
         
