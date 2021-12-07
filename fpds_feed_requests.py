@@ -18,7 +18,6 @@ class requests:
 
         return response.content
 
-
     def get(self, param: str, start_index: int=0, max_workers: int=10) -> Iterator:
         max_index = start_index + max_workers * self.page_size
         url_list = [self.base_url + quote_plus(param) + f"&start={start}" for start in range(start_index, max_index, self.page_size)]
