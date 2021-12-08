@@ -48,7 +48,7 @@ class feed_reader():
                 continue
             results.append(df)
         time_diff = time.time()-start_time
-        print(f"request: {request_num}, start index: {start_index}, processing time: {time_diff:.2f} secs")           
+        print(f"request #: {request_num}, start index: {start_index}, processing time: {time_diff:.2f} secs")           
         return results
         
     def _batch_to_csv(self, batch_results: list, batch_num: int):
@@ -62,7 +62,7 @@ class feed_reader():
             os.makedirs(self.output_dir)
             df_batch.to_csv(output_file, encoding = 'utf-8', index=False)
         time_diff = time.time()-start_time
-        print(f"output batch: {batch_num}, rows: {len(df_batch)}, processing time: {time_diff:.2f} secs")           
+        print(f"output batch #: {batch_num}, rows: {len(df_batch)}, processing time: {time_diff:.2f} secs")           
                 
     def _remove_csvs(self):
         files = os.listdir(self.output_dir)
