@@ -1,9 +1,11 @@
+from typing import Iterator
 import pandas as pd
 from lxml import etree
 import os, re
 import time, datetime
 from fpds_feed_requests import requests
 from xml_transform import transform
+from multiprocessing import Pool, cpu_count
 
 class feed_reader():
     def __init__(self, 
@@ -17,7 +19,7 @@ class feed_reader():
                  # the feed can only return up to 400000 records even though there may be more records that match the search critera 
                  max_rows: int=400000):
         self.feed_namespace = feed_namespace
-        self.tf = transform(xslt_file)
+        self.transfm = transform(xslt_file)
         self.req = requests(base_url, page_size)
         self.page_size = page_size
         self.pages_per_batch = pages_per_batch
@@ -33,18 +35,27 @@ class feed_reader():
         last_page = re.search("start=(\d+)$", href[0])
         return int(last_page.group(1))
     
-    def _request_data(self, request_num: int, param: str, start_index:int, max_workers:int) -> list:
-        start_time = time.time()
+    def _get_raw_data_from_feed(self, param: str, start_index:int, max_workers:int) -> list:
         # send requests in multiple threads to the feed
         tasks_completed = self.req.get(param, start_index, max_workers)
         results = []
         # loop thru the results returned by the threads
         for task in tasks_completed:
-            df = self.tf.to_dataframe(task.result())
-            # some worker threads may not have data to process in the last page. So skip those results
-            if (df is None):
-                continue
-            results.append(df)
+            results.append(task.result())
+        return results
+    
+    def _transform_data(self, data: list) -> list:
+        # initialize a multiprocessing pool
+        with Pool() as pool:
+            results = pool.map(self.transfm.to_dataframe, data)
+        # some items in the processed results may be None, especially in the last page. So skip those results
+        results = [result for result in results if result is not None]
+        return results
+        
+    def _request_data(self, request_num: int, param: str, start_index:int, max_workers:int) -> list:
+        start_time = time.time()
+        raw_data = self._get_raw_data_from_feed(param, start_index, max_workers)
+        results = self._transform_data(raw_data)
         time_diff = time.time()-start_time
         print(f"request #: {request_num}, start index: {start_index}, processing time: {time_diff:.2f} secs")           
         return results
@@ -71,7 +82,7 @@ class feed_reader():
     def get_data(self, param: str, max_workers: int=10):
         # keep track of the time used for the whole process    
         start_time = time.time()
-        # remove the old csv files
+        # remove the csv files generated for previous request
         self._remove_csvs()
         # get the start index of last page from the first returned data
         iter = self.req.get(param, start_index=0, max_workers=1)
