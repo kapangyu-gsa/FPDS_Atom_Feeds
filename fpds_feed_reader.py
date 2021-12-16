@@ -97,7 +97,7 @@ class feed_reader():
         request_num = 0
         batch_num = 0
         batch_results = []
-        print(f"Requesting data (~{stop_index} rows) from the feed with {cpu_count} cores...")
+        print(f"Requesting data (~{stop_index} rows) from the feed...")
         for start_index in range(0, stop_index, step):
             batch_results += self._request_data(request_num, param, start_index, max_workers)
             request_num += 1
