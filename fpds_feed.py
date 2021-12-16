@@ -1,7 +1,7 @@
-import sys, argparse
+import argparse
 from fpds_feed_reader import feed_reader
 
-def main(argv):
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("s", help="search keyword")
     parser.add_argument("v", help="keyword value or start value")
@@ -18,4 +18,4 @@ def main(argv):
     
 
 if __name__ == "__main__":
-    main(sys.argv[1:])        
+    main()        
