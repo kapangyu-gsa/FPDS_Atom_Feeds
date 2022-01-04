@@ -6,6 +6,8 @@ from urllib.parse import quote_plus
 # from time import time
 
 class requests:
+    MAX_WORKERS = 'max_workers'
+    DEFAULT_MAX_WORKERS = 10
     
     def __init__(self, base_url: str, page_size: int=10) -> None:
         self.base_url = base_url
@@ -18,7 +20,10 @@ class requests:
 
         return response.content
 
-    def get(self, param: str, start_index: int=0, max_workers: int=10) -> Iterator:
+    def get(self, param: str, **kwargs) -> Iterator:
+        start_index_param = 'start_index'
+        start_index = kwargs[start_index_param] if start_index_param in kwargs.keys() else 0
+        max_workers = kwargs[requests.MAX_WORKERS] if requests.MAX_WORKERS in kwargs.keys() else requests.DEFAULT_MAX_WORKERS
         max_index = start_index + max_workers * self.page_size
         url_list = [self.base_url + quote_plus(param) + f"&start={start}" for start in range(start_index, max_index, self.page_size)]
 

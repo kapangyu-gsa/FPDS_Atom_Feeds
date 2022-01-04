@@ -4,7 +4,7 @@ import os, re
 import time, datetime
 from fpds_feed_requests import requests
 from xml_transform import transform
-from multiprocessing import Pool, cpu_count
+from multiprocessing import Pool
 
 class feed_reader():
     def __init__(self, 
@@ -23,7 +23,7 @@ class feed_reader():
         self.page_size = page_size
         self.pages_per_batch = pages_per_batch
         self.max_rows = max_rows      
-        self.output_dir = f"{os.getcwd()}/output_files" 
+        self.output_dir = f"{os.getcwd()}/output_files"
     
     def _get_start_index_of_last_page(self, response_content: bytes):
         tree = etree.XML(response_content)
@@ -34,9 +34,9 @@ class feed_reader():
         last_page = re.search("start=(\d+)$", href[0])
         return int(last_page.group(1))
     
-    def _get_raw_data_from_feed(self, param: str, start_index:int, max_workers:int) -> list:
+    def _get_raw_data_from_feed(self, param: str, **kwargs) -> list:
         # send requests in multiple threads to the feed
-        tasks_completed = self.req.get(param, start_index, max_workers)
+        tasks_completed = self.req.get(param, **kwargs)
         results = []
         # loop thru the results returned by the threads
         for task in tasks_completed:
@@ -51,9 +51,9 @@ class feed_reader():
         results = [result for result in results if result is not None]
         return results
         
-    def _request_data(self, request_num: int, param: str, start_index:int, max_workers:int) -> list:
+    def _request_data(self, request_num: int, param: str, start_index:int, **kwargs) -> list:
         start_time = time.time()
-        raw_data = self._get_raw_data_from_feed(param, start_index, max_workers)
+        raw_data = self._get_raw_data_from_feed(param, start_index=start_index, **kwargs)
         results = self._transform_data(raw_data)
         time_diff = time.time()-start_time
         print(f"request #: {request_num}, start index: {start_index}, processing time: {time_diff:.2f} secs")           
@@ -63,7 +63,7 @@ class feed_reader():
         start_time = time.time()
         df_batch = pd.concat(batch_results, ignore_index=True)
         # export the current batch result to a .csv file
-        output_file = f"{self.output_dir}/batch{batch_num}.csv"
+        output_file = f"{self.output_dir}/batch_{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.csv"
         try:
             df_batch.to_csv(output_file, encoding = 'utf-8', index=False)
         except FileNotFoundError:
@@ -72,17 +72,14 @@ class feed_reader():
         time_diff = time.time()-start_time
         print(f"output batch #: {batch_num}, rows: {len(df_batch)}, processing time: {time_diff:.2f} secs")           
                 
-    def _remove_csvs(self):
+    def clear_existing_output_files(self):
         files = os.listdir(self.output_dir)
         for file in files:
             if file.endswith(".csv"):
                 os.remove(os.path.join(self.output_dir, file))
+        print("Existing output files were successfully removed.")
 
-    def get_data(self, param: str, max_workers: int=10):
-        # keep track of the time used for the whole process    
-        start_time = time.time()
-        # remove the csv files generated for previous request
-        self._remove_csvs()
+    def get_data(self, param: str, **kwargs):
         # get the start index of last page from the first returned data
         iter = self.req.get(param, start_index=0, max_workers=1)
         content = next(iter).result()
@@ -93,13 +90,14 @@ class feed_reader():
         # add page size to the variable so that it will read the last page of data
         last_page_index += self.page_size
         stop_index = last_page_index if (last_page_index < self.max_rows) else self.max_rows
+        max_workers = kwargs[requests.MAX_WORKERS] if requests.MAX_WORKERS in kwargs.keys() else requests.DEFAULT_MAX_WORKERS        
         step = max_workers * self.page_size
         request_num = 0
         batch_num = 0
         batch_results = []
         print(f"Requesting data (~{stop_index} rows) from the feed...")
         for start_index in range(0, stop_index, step):
-            batch_results += self._request_data(request_num, param, start_index, max_workers)
+            batch_results += self._request_data(request_num, param, start_index, max_workers=max_workers)
             request_num += 1
             # output the results to a file when the batch is full
             if (len(batch_results) >= self.pages_per_batch):
@@ -110,5 +108,3 @@ class feed_reader():
             # output the last page
             self._batch_to_csv(batch_results, batch_num)
         
-        process_time = time.time()-start_time    
-        print(f"Done! total processing time: {str(datetime.timedelta(seconds=process_time))}")
