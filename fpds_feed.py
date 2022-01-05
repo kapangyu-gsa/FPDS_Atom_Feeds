@@ -37,6 +37,7 @@ class fpds_feed:
         for curr_date in daterange(s_date, e_date):
             date_str = curr_date.strftime("%Y/%m/%d")
             param = f"{param_name}:[{date_str},{date_str}]"
+            print(f"{param_name}: {date_str}")
             self.reader.get_data(param, **kwargs)
     
 def main():
