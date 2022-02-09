@@ -1,9 +1,8 @@
 from fpds_feed_requests import requests
 from fpds_feed_reader import feed_reader
 from datetime import datetime, timedelta
-import time
 import argparse
-
+from util import timer
 
 class fpds_feed:
     date_params = ("CREATED_DATE", "LAST_MOD_DATE")
@@ -39,7 +38,8 @@ class fpds_feed:
             param = f"{param_name}:[{date_str},{date_str}]"
             print(f"{param_name}: {date_str}")
             self.reader.get_data(param, **kwargs)
-    
+
+@timer(lambda t: f"Done! total processing time: {str(timedelta(seconds=t))}")    
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("s", help="search keyword")
@@ -57,16 +57,11 @@ def main():
             return       
         kwargs[requests.MAX_WORKERS] = int(args.w)
         
-    # keep track of the time used for the whole process    
-    process_start_time = time.time()
-
     if (args.s in fpds_feed.date_params):
         feed.get_by_date_range(args.s, args.v, args.o, **kwargs)
     else:
         feed.get_data(args.s, args.v, **kwargs)
-        
-    process_time = time.time() - process_start_time    
-    print(f"Done! total processing time: {str(timedelta(seconds=process_time))}")
+
 
 if __name__ == "__main__":
     main()        

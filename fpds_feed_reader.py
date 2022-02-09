@@ -1,12 +1,15 @@
 import pandas as pd
 from lxml import etree
 import os, re
-import time, datetime
+import datetime
 from fpds_feed_requests import requests
 from xml_transform import transform
 from multiprocessing import Pool
+from util import timer
 
 class feed_reader():
+    processing_time_msg = lambda t: f"processing time: {t:.2f} secs"
+    
     def __init__(self, 
                  base_url = "https://www.fpds.gov/ezsearch/fpdsportal?s=FPDS.GOV&indexName=awardfull&templateName=1.5.2&rss=1&feed=atom0.3&q=+", 
                  feed_namespace="http://www.w3.org/2005/Atom", 
@@ -50,17 +53,16 @@ class feed_reader():
         # some items in the processed results may be None, especially in the last page. So skip those results
         results = [result for result in results if result is not None]
         return results
-        
+    
+    @timer(processing_time_msg)    
     def _request_data(self, request_num: int, param: str, start_index:int, **kwargs) -> list:
-        start_time = time.time()
         raw_data = self._get_raw_data_from_feed(param, start_index=start_index, **kwargs)
         results = self._transform_data(raw_data)
-        time_diff = time.time()-start_time
-        print(f"request #: {request_num}, start index: {start_index}, processing time: {time_diff:.2f} secs")           
+        print(f"request #: {request_num}, start index: {start_index}", end=", ")           
         return results
-        
+    
+    @timer(processing_time_msg)
     def _batch_to_csv(self, batch_results: list, batch_num: int):
-        start_time = time.time()
         df_batch = pd.concat(batch_results, ignore_index=True)
         # export the current batch result to a .csv file
         output_file = f"{self.output_dir}/batch_{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.csv"
@@ -69,8 +71,7 @@ class feed_reader():
         except FileNotFoundError:
             os.makedirs(self.output_dir)
             df_batch.to_csv(output_file, encoding = 'utf-8', index=False)
-        time_diff = time.time()-start_time
-        print(f"output batch #: {batch_num}, rows: {len(df_batch)}, processing time: {time_diff:.2f} secs")           
+        print(f"output batch #: {batch_num}, rows: {len(df_batch)}", end=", ")           
                 
     def clear_existing_output_files(self):
         files = os.listdir(self.output_dir)
